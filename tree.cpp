@@ -113,4 +113,64 @@ inline int max(int a, int b)
 
 
 
+template <class T>
+void Tree<T>::rightRotate(){
+    Tree<T>* left = dynamic_cast<Tree<T>*>(this->getLeft());
+    Tree<T>* parent = dynamic_cast<Tree<T>*>(this->getParent());
+    Tree<T>* lsRight = dynamic_cast<Tree<T>*>(left->getRight());
 
+    left->setParent(parent);
+    left->setRight(this);
+    this->setParent(left);
+    //cout << "Here?" << endl;
+    //if(lsRight != NULL) {
+    this->setLeft(lsRight);
+    if(lsRight != NULL) {
+    	lsRight->setParent(this);
+    }
+    if(parent != NULL){
+	//cout << "NonNullParent";
+        if(parent->getLeft() == this)
+            parent->setLeft(left);
+        else
+            parent->setRight(left);
+    }
+    //cout << "RRotate?" << endl;
+}
+
+template <class T>
+void Tree<T>::leftRotate(){
+    Tree<T>* right = dynamic_cast<Tree<T>*>(this->getRight());
+    Tree<T>* parent = dynamic_cast<Tree<T>*>(this->getParent());
+    Tree<T>* rsLeft = dynamic_cast<Tree<T>*>(right->getLeft());
+
+    right->setParent(parent);
+    right->setLeft(this);
+    this->setParent(right);
+    //if(rsLeft != NULL) {
+    this->setRight(rsLeft);
+    if ( rsLeft != NULL ) {
+	rsLeft->setParent(this);
+    }
+    if(parent != NULL){
+	//cout << "NonNullParent";
+        if(parent->getLeft() == this)
+            parent->setLeft(right);
+        else
+            parent->setRight(right);
+    }
+    //cout << "LRotate?" << endl;
+}
+
+/*template <class T>
+Tree<T> * Tree<T>::getRoot() {
+
+    Tree<T>* parent = dynamic_cast<Tree<T>*>(this->getParent());
+    if(parent != NULL) {
+
+        return parent->getRoot();
+    }else {
+
+        return this;
+    }
+}*/

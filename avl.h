@@ -42,9 +42,9 @@ public:
 	AVL<T> * balance();		
 		// rebalance tree
 
-	void updateHeight();	
+	//void updateHeight();	
 		// recompute heights of all nodes in tree
-
+	AVL<T> *getRoot();
 	int heightDifference();	
 		// compute height differences between children
 

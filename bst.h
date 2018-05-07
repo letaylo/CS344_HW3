@@ -28,6 +28,7 @@ public:
 	BST<T> * remove( const T &v );	
 		// returns pointer to updated tree (which no longer contains value)
 
+	BST<T> *getRoot();
 };
 
 #include "bst.cpp"

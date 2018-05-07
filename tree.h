@@ -37,13 +37,15 @@ public:
 	Tree<T> * getParent() 	{ return parent; }
 	int getHeight()			{ return height; }
 
-
 	// mutators
 	void setValue( const T &v )		{ value = v; }
 	void setLeft( Tree<T> *l )		{ left = l; }
 	void setRight( Tree<T> *r ) 	{ right = r; }
 	void setParent( Tree<T> *p )	{ parent = p; }
 	void setHeight( int h )			{ height = h; }
+	void rightRotate();
+	void leftRotate();
+
 
 	void updateHeight();		// recompute heights of all nodes
 
@@ -52,6 +54,7 @@ public:
 	virtual Tree<T> * search( const T &v ) = 0; 
 	virtual Tree<T> * insert( const T &v ) = 0;
 	virtual Tree<T> * remove( const T &v ) = 0;
+	//virtual Tree<T> * getRoot() = 0;
 
 
 	// little helpers
